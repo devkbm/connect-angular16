@@ -32,7 +32,7 @@ export class TodosComponent implements OnInit {
   }
 
   toggleTodo(todo: TodoModel) {
-    todo.isCompleted = !todo.isCompleted;
+    console.log(todo);
 
     this.service
         .saveTodo(todo)
@@ -57,7 +57,16 @@ export class TodosComponent implements OnInit {
             });
           }
         );
+  }
 
+  deleteTodo(todo: TodoModel) {
+    this.service
+        .deleteTodo(todo.pkTodoGroup, todo.pkTodo)
+        .subscribe(
+          (model: ResponseObject<TodoModel>) => {
+            console.log(model);
+          }
+        );
   }
 
   getTodoList(e: TodoGroupModel): void {
@@ -67,8 +76,8 @@ export class TodosComponent implements OnInit {
         .getTodoList(e.pkTodoGroup)
         .subscribe(
           (model: ResponseList<TodoModel>) => {
-            this.todos = model.data;
             console.log(model);
+            this.todos = model.data;
           });
 
   }

@@ -5,6 +5,28 @@
   font-weight: normal;
 }
 
+.todo-body {
+  display: grid;
+  height: calc(100% - 158px);
+  padding-top: 10px;
+
+  /*grid-template-rows: 220px 1fr;*/
+  grid-template-columns: 150px 1fr;
+  grid-template-areas:
+    "todo-group todo";
+    /*"title calendar";*/
+}
+
+.todo-group {
+  grid-area: todo-group;
+  background-color: brown;
+}
+
+.todo {
+  grid-area: todo;
+  overflow: auto;
+}
+
 h1, h2 {
   margin: 0;
   font-weight: normal;

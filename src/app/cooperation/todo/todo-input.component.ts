@@ -1,10 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TodoModel } from './todo.model';
 
 @Component({
-  selector: 'app-todo',
+  selector: 'app-todo-input',
   template: `
-    <input type="checkbox" [checked]="todo?.isCompleted"> <label> {{ todo?.todo }} </label>
+    <input type="checkbox" [checked]="todo.isCompleted" (click)="changeState()"> <label (click)="changeState()"> {{ todo.todo }} </label>
+    <button (click)="deleteTodo()">삭제</button>
   `,
   styles: [`
     :host {
@@ -44,7 +45,7 @@ import { TodoModel } from './todo.model';
       border: 1px solid darkgray;
       backgroud-color: darkgray;
       text-align: center;
-      color: white;
+      color: red;
     }
 
     input:checked + label {
@@ -52,14 +53,25 @@ import { TodoModel } from './todo.model';
     }
   `]
 })
-export class TodoComponent implements OnInit {
+export class TodoInputComponent implements OnInit {
 
-  @Input()todo?: TodoModel;
+  @Input({required: true}) todo!: TodoModel;
+  @Output() stateChanged = new EventEmitter();
+  @Output() deleteClicked = new EventEmitter<TodoModel>();
 
   constructor() {}
 
   ngOnInit() {
-
   }
+
+  changeState() {
+    this.todo.isCompleted = !this.todo.isCompleted;
+    this.stateChanged.emit(this.todo);
+  }
+
+  deleteTodo() {
+    this.deleteClicked.emit(this.todo);
+  }
+
 
 }
