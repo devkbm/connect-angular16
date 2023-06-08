@@ -10,13 +10,13 @@
   </div>
 
   <div class="todo">
-      <app-add-todo
+      <app-todo-add-input
         [pkTodoGroup]="selectedPkTodoGroup"
         (onTodoAdded)="addTodo($event)">
-      </app-add-todo>
+      </app-todo-add-input>
 
       <div *ngFor="let todo of todos; index as i" >
-        <app-todo-input [todo]="todo" (stateChanged)="toggleTodo($event)" (deleteClicked)="deleteTodo($event)"></app-todo-input>
+        <app-todo-text [todo]="todo" (stateChanged)="toggleTodo($event)" (deleteClicked)="deleteTodo($event)"></app-todo-text>
       </div>
   </div>
 

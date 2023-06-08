@@ -64,16 +64,18 @@ export class TodosComponent implements OnInit {
         .deleteTodo(todo.pkTodoGroup, todo.pkTodo)
         .subscribe(
           (model: ResponseObject<TodoModel>) => {
-            console.log(model);
+            let index = this.todos.findIndex((e) => e.pkTodoGroup === todo.pkTodoGroup && e.pkTodo === todo.pkTodo);
+            console.log(index);
+            this.todos.splice(index, 1);
           }
         );
   }
 
-  getTodoList(e: TodoGroupModel): void {
-    this.selectedPkTodoGroup = e.pkTodoGroup;
+  getTodoList(pkTodoGroup: string): void {
+    this.selectedPkTodoGroup = pkTodoGroup;
 
     this.service
-        .getTodoList(e.pkTodoGroup)
+        .getTodoList(pkTodoGroup)
         .subscribe(
           (model: ResponseList<TodoModel>) => {
             console.log(model);

@@ -11,7 +11,7 @@
   padding-top: 10px;
 
   /*grid-template-rows: 220px 1fr;*/
-  grid-template-columns: 150px 1fr;
+  grid-template-columns: 200px 1fr;
   grid-template-areas:
     "todo-group todo";
     /*"title calendar";*/
@@ -19,7 +19,8 @@
 
 .todo-group {
   grid-area: todo-group;
-  background-color: brown;
+  overflow: auto;
+  background-color: orange;
 }
 
 .todo {

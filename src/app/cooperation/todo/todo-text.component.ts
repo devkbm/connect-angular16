@@ -2,19 +2,21 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TodoModel } from './todo.model';
 
 @Component({
-  selector: 'app-todo-input',
+  selector: 'app-todo-text',
   template: `
-    <input type="checkbox" [checked]="todo.isCompleted" (click)="changeState()"> <label (click)="changeState()"> {{ todo.todo }} </label>
-    <button (click)="deleteTodo()">삭제</button>
+    <mat-checkbox [(ngModel)]="todo.isCompleted" (change)="changeState()"></mat-checkbox>
+    <label (click)="toggleState()" [class.line-break]="todo.isCompleted"> {{ todo.todo }} </label>
+    <button mat-icon-button color="warn" (click)="deleteTodo()"><mat-icon>delete</mat-icon></button>
   `,
   styles: [`
+
     :host {
       display: block;
-      padding: 16px;
+      /*padding: 16px;*/
       color: darkgray;
       background-color: white;
     }
-
+    /*
     input {
       position: relative;
     }
@@ -51,9 +53,13 @@ import { TodoModel } from './todo.model';
     input:checked + label {
       text-decoration: line-through;
     }
+*/
+    .line-break {
+      text-decoration: line-through;
+    }
   `]
 })
-export class TodoInputComponent implements OnInit {
+export class TodoTextComponent implements OnInit {
 
   @Input({required: true}) todo!: TodoModel;
   @Output() stateChanged = new EventEmitter();
@@ -65,6 +71,10 @@ export class TodoInputComponent implements OnInit {
   }
 
   changeState() {
+    this.stateChanged.emit(this.todo);
+  }
+
+  toggleState() {
     this.todo.isCompleted = !this.todo.isCompleted;
     this.stateChanged.emit(this.todo);
   }
