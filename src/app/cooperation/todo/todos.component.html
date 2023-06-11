@@ -6,7 +6,10 @@
 
 <div class="todo-body">
   <div class="todo-group">
-    <app-todo-group-list (onSelectedTodoGroup)="getTodoList($event)"></app-todo-group-list>
+    <app-todo-group-list
+      (onSelectedTodoGroup)="getTodoList($event)"
+      (onDeletedTodoGroup)="deleteTodoGroup($event)">
+    </app-todo-group-list>
   </div>
 
   <div class="todo">

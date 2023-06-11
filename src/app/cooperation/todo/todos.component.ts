@@ -81,7 +81,17 @@ export class TodosComponent implements OnInit {
             console.log(model);
             this.todos = model.data;
           });
+  }
 
+  deleteTodoGroup(pkTodoGroup: string) {
+
+    this.service
+        .deleteTodoGroup(pkTodoGroup)
+        .subscribe(
+          (model: ResponseObject<TodoGroupModel>) => {
+
+          }
+        );
   }
 }
 

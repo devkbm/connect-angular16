@@ -25,7 +25,9 @@ import { MatMenuTrigger } from '@angular/material/menu';
     </div>
     <mat-menu #contextMenu="matMenu">
       <ng-template matMenuContent let-item="item">
-        <button mat-menu-item (click)="onContextMenuAction1(item)">Action 1</button>
+        <div>
+          <input/><button mat-menu-item (click)="onContextMenuAction1(item)">Action 1</button>
+        </div>
         <button mat-menu-item (click)="onContextMenuAction2(item)">그룹 삭제</button>
       </ng-template>
     </mat-menu>
@@ -42,6 +44,7 @@ import { MatMenuTrigger } from '@angular/material/menu';
 export class TodoGroupListComponent implements OnInit {
 
   @Output() onSelectedTodoGroup = new EventEmitter<string>();
+  @Output() onDeletedTodoGroup = new EventEmitter<string>();
 
   todoGroupList: TodoGroupModel[] = [];
 
@@ -50,6 +53,7 @@ export class TodoGroupListComponent implements OnInit {
 
   contextMenuPosition = { x: '0px', y: '0px' };
 
+  // ngx-contextmenu 로 수정
 
   constructor(private service: TodoService) { }
 
@@ -58,29 +62,36 @@ export class TodoGroupListComponent implements OnInit {
   }
 
   addTodoGroup(): void {
-    this.service.newTodoGroup()
-                .subscribe(
-                  (model: ResponseObject<TodoGroupModel>) => {
-                    if (model === null || model === undefined) return;
+    this.service
+        .newTodoGroup()
+        .subscribe(
+          (model: ResponseObject<TodoGroupModel>) => {
+            if (model === null || model === undefined) return;
 
-                    this.todoGroupList.push(model.data);
-                    this.onSelectedTodoGroup.emit(model.data.pkTodoGroup);
-                  });
+            this.todoGroupList.push(model.data);
+            this.onSelectedTodoGroup.emit(model.data.pkTodoGroup);
+          }
+        );
   }
 
   getTodoGroupList(): void {
-    this.service.getMyTodoGroupList()
-                .subscribe(
-                  (model: ResponseList<TodoGroupModel>) => {
-                    if (model === null || model === undefined) return;
-                    console.log(model);
-                    this.todoGroupList = model.data;
-                  }
-                );
+    this.service
+        .getMyTodoGroupList()
+        .subscribe(
+          (model: ResponseList<TodoGroupModel>) => {
+            if (model === null || model === undefined) return;
+            console.log(model);
+            this.todoGroupList = model.data;
+          }
+        );
   }
 
   selectTodoGroup(pkTodoGroup: string): void {
     this.onSelectedTodoGroup.emit(pkTodoGroup);
+  }
+
+  deleteTodoGroup(pkTodoGroup: string): void {
+    this.onDeletedTodoGroup.emit(pkTodoGroup);
   }
 
   onContextMenu(event: MouseEvent, item: TodoGroupModel) {
@@ -97,6 +108,10 @@ export class TodoGroupListComponent implements OnInit {
   }
 
   onContextMenuAction2(item: TodoGroupModel) {
-    alert(`Click on Action 2 for ${item.pkTodoGroup}`);
+    let index = this.todoGroupList.findIndex((e) => e.pkTodoGroup === item.pkTodoGroup);
+    this.todoGroupList.splice(index, 1);
+
+    this.deleteTodoGroup(item.pkTodoGroup);
+    //alert(`Click on Action 2 for ${item.pkTodoGroup}`);
   }
 }
