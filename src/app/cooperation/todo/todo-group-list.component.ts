@@ -17,6 +17,14 @@ import { MatMenuTrigger } from '@angular/material/menu';
         {{todoGroup.todoGroupName}}
       </mat-list-option>
     </mat-selection-list>
+    <mat-nav-list>
+      <a mat-list-item > Accounts </a>
+      <a mat-list-item > Create Account </a>
+      <a mat-list-item > Contacts </a>
+      <a mat-list-item > Create Contact </a>
+      <a mat-list-item > Activities </a>
+      <a mat-list-item > Create Activity </a>
+    </mat-nav-list>
 
     <div style="visibility: hidden; position: fixed"
         [style.left]="contextMenuPosition.x"
@@ -54,6 +62,7 @@ export class TodoGroupListComponent implements OnInit {
   contextMenuPosition = { x: '0px', y: '0px' };
 
   // ngx-contextmenu 로 수정
+  // https://stackblitz.com/edit/ngx-contextmenu-example-w2zm9d?file=src%2Fapp%2Fapp.component.html,src%2Fapp%2Fapp.component.ts,src%2Fapp%2Fapp.module.ts
 
   constructor(private service: TodoService) { }
 
