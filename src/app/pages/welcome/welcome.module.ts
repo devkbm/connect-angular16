@@ -27,6 +27,7 @@ import { NzInputNumberCustomComponent } from 'src/app/shared/nz-input-number-cus
 import { NzInputRadioGroupComponent } from 'src/app/shared/nz-input-radio-group/nz-input-radio-group.component';
 import { NzInputSelectComponent } from 'src/app/shared/nz-input-select/nz-input-select.component';
 import { NzInputTreeSelectComponent } from 'src/app/shared/nz-input-tree-select/nz-input-tree-select.component';
+import { NzInputSimpleColorPickerComponent } from 'src/app/shared/nz-input-color-picker/nz-input-simple-color-picker.component';
 
 @NgModule({
   imports: [
@@ -48,7 +49,8 @@ import { NzInputTreeSelectComponent } from 'src/app/shared/nz-input-tree-select/
     NzInputNumberCustomComponent,
     NzInputRadioGroupComponent,
     NzInputSelectComponent,
-    NzInputTreeSelectComponent
+    NzInputTreeSelectComponent,
+    NzInputSimpleColorPickerComponent
   ],
   declarations: [
     WelcomeComponent,

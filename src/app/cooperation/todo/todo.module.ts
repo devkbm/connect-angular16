@@ -10,10 +10,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 
+import { ContextMenuModule } from '@perfectmemory/ngx-contextmenu';
+
 import { TodoTextComponent } from './todo-text.component';
 import { TodosComponent } from './todos.component';
 import { TodoAddInputComponent } from './todo-add-input.component';
 import { TodoGroupListComponent } from './todo-group-list.component';
+
 
 @NgModule({
   imports: [
@@ -27,7 +30,9 @@ import { TodoGroupListComponent } from './todo-group-list.component';
     MatListModule,
     MatFormFieldModule,
     MatInputModule,
-    MatMenuModule
+    MatMenuModule,
+    /* Context menu */
+    ContextMenuModule
   ],
   declarations: [
     TodoTextComponent,

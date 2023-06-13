@@ -34,21 +34,14 @@
 
   <div nz-row nzGutter="8">
     <div nz-col nzSpan="12">
-      <!--
-      <nz-form-item>
-        <nz-form-label nzFor="color" nzRequired>색상</nz-form-label>
-        <nz-form-control>
-          <input
-            formControlName="color"
-            [cpPresetColors]="preset_colors"
-            [(colorPicker)]="color"
-            [style.background]="color"
-            [cpAlphaChannel]="'always'"
-            [cpOutputFormat]="'hex'"
-            [cpOKButton]=true/>
-        </nz-form-control>
-      </nz-form-item>
-      -->
+
+      <app-nz-input-simple-color-picker
+        formControlName="color"
+        [itemId]="'color'"
+        [colorPalette]="preset_colors"
+        [required]="false" [nzErrorTip]="errorTpl">
+        색상
+      </app-nz-input-simple-color-picker>
 
       <app-nz-input-color-picker
         formControlName="color"
