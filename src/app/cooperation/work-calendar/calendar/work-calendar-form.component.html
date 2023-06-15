@@ -12,47 +12,44 @@
 
   <div nz-row nzGutter="8">
     <div nz-col nzSpan="12">
-      <!--작업그룹 Id 필드-->
       <app-nz-input-text
         formControlName="workCalendarId"
         itemId="workCalendarId"
         placeholder=""
-        [required]="true" [nzErrorTip]="errorTpl">작업그룹 Id
+        [required]="true" [nzErrorTip]="errorTpl">CALEDNAR ID
       </app-nz-input-text>
     </div>
 
     <div nz-col nzSpan="12">
-      <!--작업그룹 Id 필드-->
       <app-nz-input-text #workCalendarName
         formControlName="workCalendarName"
         itemId="workCalendarName"
-        placeholder="작업그룹명을 입력해주세요."
-        [required]="true" [nzErrorTip]="errorTpl">작업그룹명
+        placeholder=""
+        [required]="true" [nzErrorTip]="errorTpl">CALENDAR NAME
       </app-nz-input-text>
     </div>
   </div>
 
   <div nz-row nzGutter="8">
     <div nz-col nzSpan="12">
-
       <app-nz-input-simple-color-picker
         formControlName="color"
         [itemId]="'color'"
         [colorPalette]="preset_colors"
-        [required]="false" [nzErrorTip]="errorTpl">
-        색상
+        [required]="false" [nzErrorTip]="errorTpl">색상
       </app-nz-input-simple-color-picker>
 
+      <!--
       <app-nz-input-color-picker
         formControlName="color"
         [itemId]="'color'"
         placeholder="색상을 입력해주세요."
         [required]="false" [nzErrorTip]="errorTpl">색상
       </app-nz-input-color-picker>
+      -->
     </div>
 
     <div nz-col nzSpan="12">
-      <!--작업그룹 Id 필드-->
       <app-nz-input-select
         [mode]="'multiple'"
         formControlName="memberList"

@@ -12,10 +12,10 @@ import { ContextMenuComponent, ContextMenuService } from '@perfectmemory/ngx-con
   template: `
 
     <button mat-raised-button color="primary" (click)="addTodoGroup()" style="width:100%">그룹 추가</button>
-    <mat-selection-list #todoGroups [multiple]="false" hideSingleSelectionIndicator="true" color="primary"
+    <mat-selection-list #todoGroups [multiple]="false"  color="primary"
                         (selectionChange)="selectTodoGroup(todoGroups.selectedOptions.selected[0].value)">
       <!--<mat-list-option *ngFor="let todoGroup of todoGroupList; index as i" [value]="todoGroup.pkTodoGroup" (contextmenu)="onContextMenu($event, todoGroup)">-->
-      <mat-list-option *ngFor="let todoGroup of todoGroupList; index as i" [value]="todoGroup.pkTodoGroup" [contextMenu]="basicMenu" [contextMenuValue]="todoGroup">
+      <mat-list-option *ngFor="let todoGroup of todoGroupList; trackBy: trackByItem; " [value]="todoGroup.pkTodoGroup" [contextMenu]="basicMenu" [contextMenuValue]="todoGroup">
         {{todoGroup.todoGroupName}}
       </mat-list-option>
     </mat-selection-list>
@@ -88,6 +88,8 @@ export class TodoGroupListComponent implements OnInit {
   @Output() onDeletedTodoGroup = new EventEmitter<string>();
 
   todoGroupList: TodoGroupModel[] = [];
+  trackByItem = (index: number, item: TodoGroupModel) => item.pkTodoGroup;
+
 
   @ViewChild(MatMenuTrigger) contextMenu!: MatMenuTrigger;
   contextMenuPosition = { x: '0px', y: '0px' };
