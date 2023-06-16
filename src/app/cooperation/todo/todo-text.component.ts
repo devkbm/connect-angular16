@@ -1,8 +1,17 @@
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatIconModule } from '@angular/material/icon';
+
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TodoModel } from './todo.model';
 
+
 @Component({
+  standalone: true,
   selector: 'app-todo-text',
+  imports: [ CommonModule, FormsModule, MatButtonModule, MatCheckboxModule, MatIconModule ],
   template: `
     <mat-checkbox [(ngModel)]="todo.isCompleted" (change)="changeState()"></mat-checkbox>
     <label (click)="toggleState()" [class.line-break]="todo.isCompleted"> {{ todo.todo }} </label>

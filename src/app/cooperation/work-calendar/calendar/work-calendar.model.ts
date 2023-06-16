@@ -3,4 +3,5 @@ export interface WorkCalendar {
   workCalendarName: string;
   color: string;
   memberList: string[];
+  name: string;
 }

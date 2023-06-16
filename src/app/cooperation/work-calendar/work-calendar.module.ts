@@ -43,6 +43,7 @@ import { WorkCalendarViewComponent } from './calendar-view/work-calendar-view.co
 import { MyWorkCalendarGridComponent } from './calendar/my-work-calendar-grid.component';
 import { WorkCalendarFormComponent } from './calendar/work-calendar-form.component';
 import { NzInputSimpleColorPickerComponent } from 'src/app/shared/nz-input-color-picker/nz-input-simple-color-picker.component';
+import { MyWorkCalendarListComponent } from './calendar/my-work-calendar-list.component';
 
 const nzModules = [
   NzLayoutModule,
@@ -79,6 +80,7 @@ const nzModules = [
     NzInputDateTimeComponent,
     NzInputSelectComponent,
     NzInputSimpleColorPickerComponent,
+    MyWorkCalendarListComponent,
     CalendarModule
   ],
   declarations: [

@@ -1,8 +1,17 @@
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TodoModel } from './todo.model';
 
 @Component({
+  standalone: true,
   selector: 'app-todo-add-input',
+  imports: [ CommonModule, FormsModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatIconModule ],
   template: `
     <button mat-icon-button color="primary" (click)="addTodo(newText)"><mat-icon>add</mat-icon></button>
     <mat-form-field style="width:100%">

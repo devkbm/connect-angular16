@@ -1,14 +1,20 @@
+import { CommonModule } from '@angular/common';
+import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuTrigger } from '@angular/material/menu';
+import { ContextMenuComponent, ContextMenuModule, ContextMenuService } from '@perfectmemory/ngx-contextmenu';
+
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+
 import { ResponseList } from 'src/app/core/model/response-list';
 import { ResponseObject } from 'src/app/core/model/response-object';
 import { TodoGroupModel } from './todo-group.model';
-
 import { TodoService } from './todo.service';
-import { MatMenuTrigger } from '@angular/material/menu';
-import { ContextMenuComponent, ContextMenuService } from '@perfectmemory/ngx-contextmenu';
 
 @Component({
+  standalone: true,
   selector: 'app-todo-group-list',
+  imports: [ CommonModule, MatListModule, MatButtonModule, ContextMenuModule ],
   template: `
 
     <button mat-raised-button color="primary" (click)="addTodoGroup()" style="width:100%">그룹 추가</button>
