@@ -1,3 +1,6 @@
+import { CommonModule } from '@angular/common';
+import { AgGridModule } from 'ag-grid-angular';
+
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { AppAlarmService } from 'src/app/core/service/app-alarm.service';
@@ -9,8 +12,13 @@ import { User } from './user.model';
 import { ButtonRendererComponent } from 'src/app/core/grid/renderer/button-renderer.component';
 import { CheckboxRendererComponent } from 'src/app/core/grid/renderer/checkbox-renderer.component';
 
+
 @Component({
+  standalone: true,
   selector: 'app-user-grid',
+  imports: [
+    CommonModule, AgGridModule
+  ],
   template: `
     <ag-grid-angular
       [ngStyle]="style"
@@ -30,14 +38,9 @@ export class UserGridComponent extends AggridFunction implements OnInit {
 
   userList: User[] = [];
 
-  @Output()
-  rowClicked = new EventEmitter();
-
-  @Output()
-  rowDoubleClicked = new EventEmitter();
-
-  @Output()
-  editButtonClicked = new EventEmitter();
+  @Output() rowClicked = new EventEmitter();
+  @Output() rowDoubleClicked = new EventEmitter();
+  @Output() editButtonClicked = new EventEmitter();
 
   constructor(private userService: UserService,
               private appAlarmService: AppAlarmService) {

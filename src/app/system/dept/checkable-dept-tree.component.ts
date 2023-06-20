@@ -1,13 +1,20 @@
+import { CommonModule } from '@angular/common';
+
 import { Component, OnInit, ViewChild, Output, EventEmitter, Input } from '@angular/core';
 import { ResponseList } from 'src/app/core/model/response-list';
 import { DeptHierarchy } from './dept-hierarchy.model';
 
 import { DeptService } from './dept.service';
 
-import { NzFormatEmitEvent, NzTreeComponent } from 'ng-zorro-antd/tree';
+import { NzFormatEmitEvent, NzTreeComponent, NzTreeModule } from 'ng-zorro-antd/tree';
+
 
 @Component({
+  standalone: true,
   selector: 'app-checkable-dept-tree',
+  imports: [
+    CommonModule, NzTreeModule
+  ],
   template: `
     {{defaultCheckedKeys}}
     <nz-tree

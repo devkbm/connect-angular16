@@ -1,3 +1,6 @@
+import { CommonModule } from '@angular/common';
+import { AgGridModule } from 'ag-grid-angular';
+
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 import { AppAlarmService } from 'src/app/core/service/app-alarm.service';
@@ -8,8 +11,11 @@ import { BizCode } from './biz-code.model';
 import { BizCodeService } from './biz-code.service';
 import { ButtonRendererComponent } from 'src/app/core/grid/renderer/button-renderer.component';
 
+
 @Component({
+  standalone: true,
   selector: 'app-biz-code-grid',
+  imports: [ CommonModule, AgGridModule ],
   template: `
     <ag-grid-angular
       [ngStyle]="style"

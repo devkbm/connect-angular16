@@ -1,3 +1,7 @@
+import { CommonModule } from '@angular/common';
+import { AgGridModule } from 'ag-grid-angular';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
+
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { AppAlarmService } from 'src/app/core/service/app-alarm.service';
@@ -8,8 +12,14 @@ import { WebResourceService } from './web-resource.service';
 import { WebResource } from './web-resource.model';
 import { ButtonRendererComponent } from 'src/app/core/grid/renderer/button-renderer.component';
 
+
+
 @Component({
+  standalone: true,
   selector: 'app-web-resource-grid',
+  imports: [
+    CommonModule, AgGridModule, NzSpinModule
+  ],
   template: `
     <nz-spin nzTip="Loading..." [nzSpinning]="isLoading">
       <ag-grid-angular

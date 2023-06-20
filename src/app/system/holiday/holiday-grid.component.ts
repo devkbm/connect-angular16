@@ -1,3 +1,6 @@
+import { CommonModule } from '@angular/common';
+import { AgGridModule } from 'ag-grid-angular';
+
 import { Holiday } from './holiday.model';
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { AggridFunction } from 'src/app/core/grid/aggrid-function';
@@ -7,7 +10,11 @@ import { HolidayService } from './holiday.service';
 import { ButtonRendererComponent } from 'src/app/core/grid/renderer/button-renderer.component';
 
 @Component({
+  standalone: true,
   selector: 'app-holiday-grid',
+  imports: [
+    CommonModule, AgGridModule
+  ],
   template: `
     <ag-grid-angular
       [ngStyle]="style"

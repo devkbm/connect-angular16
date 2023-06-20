@@ -1,3 +1,13 @@
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
+import { NzInputTextComponent } from 'src/app/shared/nz-input-text/nz-input-text.component';
+import { NzInputTextareaComponent } from 'src/app/shared/nz-input-textarea/nz-input-textarea.component';
+import { NzInputTreeSelectComponent } from 'src/app/shared/nz-input-tree-select/nz-input-tree-select.component';
+import { NzInputSelectComponent } from 'src/app/shared/nz-input-select/nz-input-select.component';
+
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 
@@ -11,9 +21,14 @@ import { ResponseList } from 'src/app/core/model/response-list';
 import { FormBase, FormType } from 'src/app/core/form/form-base';
 import { SystemTypeEnum } from './system-type-enum.model';
 
-
 @Component({
+  standalone: true,
   selector: 'app-common-code-form',
+  imports: [
+    CommonModule, FormsModule, ReactiveFormsModule,
+    NzFormModule, NzInputModule, NzInputNumberModule,
+    NzInputTextComponent, NzInputTextareaComponent, NzInputTreeSelectComponent, NzInputSelectComponent
+  ],
   templateUrl: './common-code-form.component.html',
   styleUrls: ['./common-code-form.component.css']
 })

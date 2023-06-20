@@ -1,3 +1,6 @@
+import { CommonModule } from '@angular/common';
+import { AgGridModule } from 'ag-grid-angular';
+
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { AppAlarmService } from 'src/app/core/service/app-alarm.service';
@@ -9,7 +12,9 @@ import { CommonCode } from './common-code.model';
 import { ButtonRendererComponent } from 'src/app/core/grid/renderer/button-renderer.component';
 
 @Component({
+  standalone: true,
   selector: 'app-common-code-grid',
+  imports: [ CommonModule, AgGridModule ],
   template: `
     <ag-grid-angular
       [ngStyle]="style"

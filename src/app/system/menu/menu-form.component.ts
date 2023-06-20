@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewChild, AfterViewInit, OnChanges, SimpleChanges } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { FormBase, FormType } from 'src/app/core/form/form-base';
 import { ResponseList } from 'src/app/core/model/response-list';
@@ -12,9 +12,21 @@ import { Menu } from './menu.model';
 import { MenuHierarchy } from './menu-hierarchy.model';
 import { MenuGroup } from './menu-group.model';
 import { existingMenuValidator } from './menu-duplication-validator.directive';
+import { CommonModule } from '@angular/common';
+import { NzCrudButtonGroupComponent } from 'src/app/shared/nz-crud-button-group/nz-crud-button-group.component';
+import { NzInputTextareaComponent } from 'src/app/shared/nz-input-textarea/nz-input-textarea.component';
+import { NzInputNumberCustomComponent } from 'src/app/shared/nz-input-number-custom/nz-input-number-custom.component';
+import { NzInputSelectComponent } from 'src/app/shared/nz-input-select/nz-input-select.component';
+import { NzTreeSelectCustomComponent } from 'src/app/shared/nz-tree-select-custom/nz-tree-select-custom.component';
 
 @Component({
+  standalone: true,
   selector: 'app-menu-form',
+  imports: [
+    CommonModule, FormsModule, ReactiveFormsModule,
+    NzCrudButtonGroupComponent, NzInputTextComponent,
+    NzInputTextareaComponent, NzInputNumberCustomComponent, NzInputSelectComponent, NzTreeSelectCustomComponent
+  ],
   templateUrl: './menu-form.component.html',
   styleUrls: ['./menu-form.component.css']
 })

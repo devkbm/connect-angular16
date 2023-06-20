@@ -1,13 +1,42 @@
+import { CommonModule } from '@angular/common';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+
 import { Component, Self, Optional, Input, OnInit } from '@angular/core';
-import { ControlValueAccessor, NgControl } from '@angular/forms';
+import { ControlValueAccessor, FormsModule, NgControl } from '@angular/forms';
 import { DeptService } from './dept.service';
 import { Dept } from './dept.model';
 import { ResponseList } from 'src/app/core/model/response-list';
 
 @Component({
+  standalone: true,
   selector: 'app-dept-select',
-  templateUrl: './dept-select.component.html',
-  styleUrls: ['./dept-select.component.css']
+  imports: [
+    CommonModule, FormsModule, NzSelectModule
+  ],
+  template: `
+    <nz-select
+      class="app-dept-select"
+      nzShowSearch
+      [(ngModel)]="_value"
+      [nzDisabled]="disabled"
+      [nzPlaceHolder]="placeholder"
+      nzShowSearch
+      (blur)="onTouched($event)"
+      (ngModelChange)="changeFn($event)">
+        <nz-option
+            *ngFor="let option of deptList"
+            [nzLabel]="option.deptNameKorean + '[' + option.deptCode + ']'"
+            [nzValue]="option.deptCode">
+        </nz-option>
+    </nz-select>
+  `,
+  styles: [`
+    .app-dept-select {
+      margin: 0 8px 10px 0;
+      width: 120px;
+    }
+
+  `]
 })
 export class DeptSelectComponent implements ControlValueAccessor, OnInit {
 

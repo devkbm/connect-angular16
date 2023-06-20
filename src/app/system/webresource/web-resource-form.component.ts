@@ -1,5 +1,7 @@
+import { CommonModule } from '@angular/common';
+
 import { Component, OnInit, Output, EventEmitter, ViewChild, AfterViewInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { WebResourceService } from './web-resource.service';
 import { AppAlarmService } from 'src/app/core/service/app-alarm.service';
@@ -12,8 +14,17 @@ import { ResponseList } from 'src/app/core/model/response-list';
 import { ResouceTypeEnum } from './resource-type-enum';
 import { NzInputTextComponent } from 'src/app/shared/nz-input-text/nz-input-text.component';
 
+import { NzCrudButtonGroupComponent } from 'src/app/shared/nz-crud-button-group/nz-crud-button-group.component';
+import { NzInputSelectComponent } from 'src/app/shared/nz-input-select/nz-input-select.component';
+import { NzInputTextareaComponent } from 'src/app/shared/nz-input-textarea/nz-input-textarea.component';
+
 @Component({
+  standalone: true,
   selector: 'app-web-resource-form',
+  imports: [
+    CommonModule, FormsModule, ReactiveFormsModule,
+    NzInputTextComponent, NzInputTextareaComponent, NzCrudButtonGroupComponent, NzInputSelectComponent
+  ],
   templateUrl: './web-resource-form.component.html',
   styleUrls: ['./web-resource-form.component.css']
 })

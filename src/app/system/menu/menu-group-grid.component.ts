@@ -1,3 +1,6 @@
+import { CommonModule } from '@angular/common';
+import { AgGridModule } from 'ag-grid-angular';
+
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { AppAlarmService } from 'src/app/core/service/app-alarm.service';
@@ -8,8 +11,13 @@ import { MenuService } from './menu.service';
 import { MenuGroup } from './menu-group.model';
 import { ButtonRendererComponent } from 'src/app/core/grid/renderer/button-renderer.component';
 
+
 @Component({
+  standalone: true,
   selector: 'app-menu-group-grid',
+  imports: [
+    CommonModule, AgGridModule
+  ],
   template: `
     <ag-grid-angular
       [ngStyle]="style"
@@ -29,14 +37,9 @@ export class MenuGroupGridComponent extends AggridFunction implements OnInit {
 
   menuGroupList: MenuGroup[] = [];
 
-  @Output()
-  rowSelected = new EventEmitter();
-
-  @Output()
-  editButtonClicked = new EventEmitter();
-
-  @Output()
-  rowDoubleClicked = new EventEmitter();
+  @Output() rowSelected = new EventEmitter();
+  @Output() editButtonClicked = new EventEmitter();
+  @Output() rowDoubleClicked = new EventEmitter();
 
   constructor(private menuService: MenuService,
               private appAlarmService: AppAlarmService) {

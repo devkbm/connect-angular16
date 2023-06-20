@@ -1,5 +1,6 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit, ViewChild, AfterViewInit, OnChanges, SimpleChanges } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { FormBase, FormType } from 'src/app/core/form/form-base';
 import { AppAlarmService } from 'src/app/core/service/app-alarm.service';
@@ -10,9 +11,17 @@ import { existingAuthorityValidator } from './authority-duplication-validator.di
 import { AuthorityService } from './authority.service';
 
 import { NzInputTextComponent } from 'src/app/shared/nz-input-text/nz-input-text.component';
+import { NzInputTextareaComponent } from 'src/app/shared/nz-input-textarea/nz-input-textarea.component';
+import { NzCrudButtonGroupComponent } from 'src/app/shared/nz-crud-button-group/nz-crud-button-group.component';
+
 
 @Component({
+  standalone: true,
   selector: 'app-authority-form',
+  imports: [
+    CommonModule, FormsModule, ReactiveFormsModule,
+    NzInputTextComponent, NzInputTextareaComponent, NzCrudButtonGroupComponent
+  ],
   templateUrl: './authority-form.component.html',
   styleUrls: ['./authority-form.component.css']
 })

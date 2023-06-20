@@ -1,5 +1,12 @@
+import { CommonModule } from '@angular/common';
+import { NzInputTextareaComponent } from 'src/app/shared/nz-input-textarea/nz-input-textarea.component';
+import { NzInputNumberCustomComponent } from 'src/app/shared/nz-input-number-custom/nz-input-number-custom.component';
+import { NzInputDateComponent } from 'src/app/shared/nz-input-date/nz-input-date.component';
+import { NzTreeSelectModule } from 'ng-zorro-antd/tree-select';
+import { NzFormModule } from 'ng-zorro-antd/form';
+
 import { Component, OnInit, Output, EventEmitter, ViewChild, AfterViewInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { DeptService } from './dept.service';
 import { AppAlarmService } from 'src/app/core/service/app-alarm.service';
@@ -12,8 +19,15 @@ import { DeptHierarchy } from './dept-hierarchy.model';
 import { ResponseList } from 'src/app/core/model/response-list';
 import { NzInputTextComponent } from 'src/app/shared/nz-input-text/nz-input-text.component';
 
+
 @Component({
+  standalone: true,
   selector: 'app-dept-form',
+  imports: [
+    CommonModule, FormsModule, ReactiveFormsModule, NzFormModule, NzTreeSelectModule,
+    NzInputTextComponent, NzInputTextareaComponent, NzInputNumberCustomComponent,
+    NzInputDateComponent
+  ],
   templateUrl: './dept-form.component.html',
   styleUrls: ['./dept-form.component.css']
 })

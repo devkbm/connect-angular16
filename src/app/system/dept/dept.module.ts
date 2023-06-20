@@ -6,26 +6,11 @@ import { CustomHttpInterceptor } from 'src/app/core/interceptor/custom-http-inte
 
 /* NG-ZORRO */
 import { NZ_I18N, ko_KR } from 'ng-zorro-antd/i18n';
-import { NzLayoutModule } from 'ng-zorro-antd/layout';
-import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzFormModule } from 'ng-zorro-antd/form';
-import { NzSelectModule } from 'ng-zorro-antd/select';
-import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
 import { NzInputModule } from 'ng-zorro-antd/input';
-import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
-import { NzTreeModule } from 'ng-zorro-antd/tree';
-import { NzTabsModule } from 'ng-zorro-antd/tabs';
-import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
-import { NzTreeSelectModule } from 'ng-zorro-antd/tree-select';
 import { NzButtonModule } from 'ng-zorro-antd/button';
-import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { NzIconModule } from 'ng-zorro-antd/icon';
-import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
-import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
-
-/* AG-GRID */
-import { AgGridModule } from 'ag-grid-angular';
 
 /* Inner Component */
 import { DeptService } from './dept.service';
@@ -34,33 +19,7 @@ import { DeptFormComponent } from './dept-form.component';
 import { DeptTreeComponent } from './dept-tree.component';
 import { DeptSelectComponent } from './dept-select.component';
 import { CheckableDeptTreeComponent } from './checkable-dept-tree.component';
-import { NzInputTextComponent } from 'src/app/shared/nz-input-text/nz-input-text.component';
-import { NzInputTextareaComponent } from 'src/app/shared/nz-input-textarea/nz-input-textarea.component';
-import { NzInputDateComponent } from 'src/app/shared/nz-input-date/nz-input-date.component';
-import { NzInputNumberCustomComponent } from 'src/app/shared/nz-input-number-custom/nz-input-number-custom.component';
 import { NzPageHeaderCustomComponent } from 'src/app/shared/nz-page-header-custom/nz-page-header-custom.component';
-
-
-
-const nzModules = [
-  NzLayoutModule,
-  NzGridModule,
-  NzFormModule,
-  NzSelectModule,
-  NzPageHeaderModule,
-  NzInputModule,
-  NzDrawerModule,
-  NzDividerModule,
-  NzTreeModule,
-  NzTabsModule,
-  NzInputNumberModule,
-  NzTreeSelectModule,
-  NzButtonModule,
-  NzIconModule,
-  NzDatePickerModule,
-  NzPopconfirmModule,
-  NzBreadCrumbModule
-]
 
 @NgModule({
   imports: [
@@ -69,19 +28,18 @@ const nzModules = [
     ReactiveFormsModule,
     HttpClientModule,
     HttpClientXsrfModule.withOptions({cookieName: 'XSRF-TOKEN'}),
-    AgGridModule,
-    nzModules,
-    NzInputTextComponent,
-    NzInputTextareaComponent,
-    NzInputDateComponent,
-    NzInputNumberCustomComponent,
-    NzPageHeaderCustomComponent
-  ],
-  declarations: [
-    DeptFormComponent,
+    NzFormModule,
+    NzButtonModule,
+    NzIconModule,
+    NzInputModule,
+    NzDividerModule,
+    NzPageHeaderCustomComponent,
     DeptTreeComponent,
     DeptSelectComponent,
     CheckableDeptTreeComponent,
+    DeptFormComponent
+  ],
+  declarations: [
     DeptComponent
   ],
   providers: [

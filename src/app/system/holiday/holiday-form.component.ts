@@ -1,15 +1,26 @@
+import { CommonModule, formatDate } from '@angular/common';
+import { NzFormModule } from 'ng-zorro-antd/form';
+
+import { NzCrudButtonGroupComponent } from 'src/app/shared/nz-crud-button-group/nz-crud-button-group.component';
+import { NzInputDateComponent } from 'src/app/shared/nz-input-date/nz-input-date.component';
+import { NzInputTextComponent } from 'src/app/shared/nz-input-text/nz-input-text.component';
+import { NzInputTextareaComponent } from 'src/app/shared/nz-input-textarea/nz-input-textarea.component';
+
 import { Component, OnInit, Output, EventEmitter, AfterViewInit } from '@angular/core';
-import { formatDate } from '@angular/common';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FormBase, FormType } from 'src/app/core/form/form-base';
 import { AppAlarmService } from 'src/app/core/service/app-alarm.service';
 import { HolidayService } from './holiday.service';
 import { ResponseObject } from 'src/app/core/model/response-object';
 import { Holiday } from './holiday.model';
 
-
 @Component({
+  standalone: true,
   selector: 'app-holiday-form',
+  imports: [
+    CommonModule, FormsModule, ReactiveFormsModule, NzFormModule,
+    NzCrudButtonGroupComponent, NzInputTextComponent, NzInputTextareaComponent, NzInputDateComponent
+  ],
   templateUrl: './holiday-form.component.html',
   styleUrls: ['./holiday-form.component.css']
 })

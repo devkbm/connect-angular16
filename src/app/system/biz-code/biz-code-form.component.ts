@@ -1,3 +1,10 @@
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NzCrudButtonGroupComponent } from 'src/app/shared/nz-crud-button-group/nz-crud-button-group.component';
+import { NzInputTextComponent } from 'src/app/shared/nz-input-text/nz-input-text.component';
+import { NzInputTextareaComponent } from 'src/app/shared/nz-input-textarea/nz-input-textarea.component';
+import { NzInputNumberCustomComponent } from 'src/app/shared/nz-input-number-custom/nz-input-number-custom.component';
+
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { AppAlarmService } from 'src/app/core/service/app-alarm.service';
@@ -7,9 +14,17 @@ import { ResponseObject } from 'src/app/core/model/response-object';
 
 import { BizCodeService } from './biz-code.service';
 import { BizCode } from './biz-code.model';
+import { NzFormModule } from 'ng-zorro-antd/form';
+
+
 
 @Component({
+  standalone: true,
   selector: 'app-biz-code-form',
+  imports:  [
+    CommonModule, FormsModule, ReactiveFormsModule, NzFormModule,
+    NzInputTextComponent, NzInputTextareaComponent, NzInputNumberCustomComponent, NzCrudButtonGroupComponent
+  ],
   templateUrl: './biz-code-form.component.html',
   styleUrls: ['./biz-code-form.component.css']
 })

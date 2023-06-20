@@ -7,9 +7,15 @@ import { ResponseList } from 'src/app/core/model/response-list';
 import { MenuService } from './menu.service';
 import { Menu } from './menu.model';
 import { ButtonRendererComponent } from 'src/app/core/grid/renderer/button-renderer.component';
+import { CommonModule } from '@angular/common';
+import { AgGridModule } from 'ag-grid-angular';
 
 @Component({
+  standalone: true,
   selector: 'app-menu-grid',
+  imports: [
+    CommonModule, AgGridModule
+  ],
   template: `
     <ag-grid-angular
       [ngStyle]="style"

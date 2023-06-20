@@ -3,9 +3,16 @@ import { Component, OnInit } from '@angular/core';
 import { UserSessionService } from 'src/app/core/service/user-session.service';
 import { ResponseObject } from 'src/app/core/model/response-object';
 import { User } from './user.model';
+import { CommonModule } from '@angular/common';
+import { NzAvatarModule } from 'ng-zorro-antd/avatar';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 @Component({
+  standalone: true,
   selector: 'app-user-profile',
+  imports: [
+    CommonModule, NzAvatarModule, NzIconModule
+  ],
   template: `
     <div class="card">
       <nz-avatar

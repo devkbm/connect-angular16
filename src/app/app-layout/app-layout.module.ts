@@ -35,7 +35,8 @@ import { SideMenuComponent } from './side-menu/side-menu.component';
     NzAvatarModule,
     NzIconModule,
     NzSelectModule,
-    NzDropDownModule
+    NzDropDownModule,
+    UserProfileComponent
   ],
   declarations: [
     AppLayoutComponent,

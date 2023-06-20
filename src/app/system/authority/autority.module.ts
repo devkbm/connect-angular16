@@ -13,10 +13,6 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
-import { NzSpinModule } from 'ng-zorro-antd/spin';
-
-/* AG-GRID */
-import { AgGridModule } from 'ag-grid-angular';
 
 /* Inner Component */
 import { AuthorityComponent } from './authority.component';
@@ -25,10 +21,7 @@ import { AuthorityFormComponent } from './authority-form.component';
 import { AuthorityGridComponent } from './authority-grid.component';
 
 /* Shared Component */
-import { NzInputTextComponent } from 'src/app/shared/nz-input-text/nz-input-text.component';
-import { NzInputTextareaComponent } from 'src/app/shared/nz-input-textarea/nz-input-textarea.component';
 import { NzButtonsComponent } from 'src/app/shared/nz-buttons/nz-buttons.component';
-import { NzCrudButtonGroupComponent } from 'src/app/shared/nz-crud-button-group/nz-crud-button-group.component';
 import { NzPageHeaderCustomComponent } from 'src/app/shared/nz-page-header-custom/nz-page-header-custom.component';
 import { NzSearchAreaComponent } from 'src/app/shared/nz-search-area/nz-search-area.component';
 
@@ -39,7 +32,6 @@ import { NzSearchAreaComponent } from 'src/app/shared/nz-search-area/nz-search-a
     ReactiveFormsModule,
     HttpClientModule,
     HttpClientXsrfModule.withOptions({cookieName: 'XSRF-TOKEN'}),
-    AgGridModule,
     /* NG-ZORRO  */
     NzButtonModule,
     NzPopconfirmModule,
@@ -48,18 +40,15 @@ import { NzSearchAreaComponent } from 'src/app/shared/nz-search-area/nz-search-a
     NzInputModule,
     NzDrawerModule,
     NzDividerModule,
-    NzSpinModule,
     /* Shared Component */
-    NzInputTextComponent,
-    NzInputTextareaComponent,
     NzButtonsComponent,
-    NzCrudButtonGroupComponent,
     NzPageHeaderCustomComponent,
-    NzSearchAreaComponent
+    NzSearchAreaComponent,
+
+    AuthorityGridComponent,
+    AuthorityFormComponent
   ],
   declarations: [
-    AuthorityFormComponent,
-    AuthorityGridComponent,
     AuthorityComponent
   ],
   providers: [

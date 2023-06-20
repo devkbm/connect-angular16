@@ -1,11 +1,20 @@
 import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
-import { NzUploadChangeParam, NzUploadFile } from 'ng-zorro-antd/upload';
+import { NzUploadChangeParam, NzUploadFile, NzUploadModule } from 'ng-zorro-antd/upload';
 import { saveAs } from 'file-saver';
 import { GlobalProperty } from 'src/app/core/global-property';
 import { UserService } from './user.service';
+import { CommonModule } from '@angular/common';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzSpaceModule } from 'ng-zorro-antd/space';
+import { NzAvatarModule } from 'ng-zorro-antd/avatar';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 @Component({
+  standalone: true,
   selector: 'app-user-image-upload',
+  imports: [
+    CommonModule, NzButtonModule, NzUploadModule, NzAvatarModule, NzIconModule, NzSpaceModule
+  ],
   template: `
   <div class="container">
     <nz-avatar class="avatar" nzShape="square" [nzSize]="96" [nzSrc]="getImageSrc()" nzIcon="user">
