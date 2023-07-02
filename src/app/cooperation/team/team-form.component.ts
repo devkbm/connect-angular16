@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, AfterViewInit, OnChanges, SimpleChanges } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { FormBase, FormType } from 'src/app/core/form/form-base';
 import { AppAlarmService } from 'src/app/core/service/app-alarm.service';
@@ -8,9 +8,18 @@ import { TeamService } from './team.service';
 import { TeamJoinableUserModel, TeamModel } from './team.model';
 import { ResponseList } from 'src/app/core/model/response-list';
 import { NzInputTextComponent } from 'src/app/shared/nz-input-text/nz-input-text.component';
+import { CommonModule } from '@angular/common';
+import { NzCrudButtonGroupComponent } from 'src/app/shared/nz-crud-button-group/nz-crud-button-group.component';
+import { NzInputSelectComponent } from 'src/app/shared/nz-input-select/nz-input-select.component';
+import { NzFormModule } from 'ng-zorro-antd/form';
 
 @Component({
+  standalone: true,
   selector: 'app-team-form',
+  imports: [
+    CommonModule, FormsModule, ReactiveFormsModule, NzFormModule,
+    NzInputTextComponent, NzCrudButtonGroupComponent, NzInputSelectComponent
+  ],
   template: `
     <form nz-form [formGroup]="fg" nzLayout="vertical">
       <!-- 폼 오류 메시지 템플릿 -->

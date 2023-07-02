@@ -69,14 +69,15 @@ const nzModules = [
     NzFileUploadComponent,
     NzInputCkeditorComponent,
     NzInputSelectComponent,
-    NzInputTreeSelectComponent
+    NzInputTreeSelectComponent,
+
+    ArticleGridComponent,
+    BoardTreeComponent,
+    ArticleViewComponent
   ],
   declarations: [
-    ArticleViewComponent,
-    BoardTreeComponent,
     BoardFormComponent,
     ArticleFormComponent,
-    ArticleGridComponent,
     BoardComponent
   ],
   providers: [

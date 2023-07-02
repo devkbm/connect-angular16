@@ -12,10 +12,7 @@ import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { AgGridModule } from 'ag-grid-angular';
 
 const nzModules = [
-  NzFormModule,
-  NzButtonModule,
-  NzDrawerModule,
-  NzDividerModule
+
 ]
 
 import { TeamComponent } from './team.component';
@@ -29,27 +26,24 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
 
 
 @NgModule({
-    declarations: [
-        TeamFormComponent,
-        TeamComponent
-    ],
-    providers: [
-        { provide: NZ_I18N, useValue: ko_KR },
-    ],
-    exports: [
-        TeamComponent
-    ],
-    imports: [
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
-        nzModules,
-        AgGridModule,
-        NzInputTextComponent,
-        NzCrudButtonGroupComponent,
-        NzInputSelectComponent,
-        TeamGridComponent,
-        NzPageHeaderCustomComponent
-    ]
+  imports: [
+    CommonModule,
+    NzButtonModule,
+    NzDrawerModule,
+    NzDividerModule,
+
+    TeamFormComponent,
+    TeamGridComponent,
+    NzPageHeaderCustomComponent
+  ],
+  declarations: [
+    TeamComponent
+  ],
+  providers: [
+    { provide: NZ_I18N, useValue: ko_KR },
+  ],
+  exports: [
+    TeamComponent
+  ]
 })
 export class TeamModule { }

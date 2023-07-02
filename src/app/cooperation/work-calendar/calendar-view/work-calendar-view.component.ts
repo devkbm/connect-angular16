@@ -1,5 +1,7 @@
+import { CommonModule, formatDate } from '@angular/common';
+import { CalendarModule } from 'src/app/shared/calendar/calendar.module';
+
 import { Component, OnInit, ViewChild, Output, EventEmitter, Input, AfterViewInit } from '@angular/core';
-import { formatDate } from '@angular/common';
 
 import { ResponseList } from 'src/app/core/model/response-list';
 
@@ -8,6 +10,7 @@ import { DayPilot } from '@daypilot/daypilot-lite-angular';
 import { WorkCalendarEventService } from '../event/work-calendar-event.service';
 import { WorkCalendarEvent } from '../event/work-calendar-event.model';
 
+
 export interface NewDateSelectedArgs {
   workCalendarId: number;
   start: Date;
@@ -15,9 +18,36 @@ export interface NewDateSelectedArgs {
 }
 
 @Component({
+  standalone: true,
   selector: 'app-work-calendar-view',
-  templateUrl: './work-calendar-view.component.html',
-  styleUrls: ['./work-calendar-view.component.css']
+  imports: [
+    CommonModule, CalendarModule
+  ],
+  template: `
+    <!--
+    <div class="calendar-div">
+        <full-calendar #calendar [options]="calendarOptions">
+        </full-calendar>
+    </div>
+    -->
+    <div class="calendar-div">
+      <app-daypilot-calendar
+        [events]="eventData"
+        (eventClicked)="eventClicked($event)"
+        (rangeChanged)="rangeChanged($event)"
+        (datesSelected)="onDateClick($event)"
+        (modeChanged)="calendarModeChanged($event)">
+      </app-daypilot-calendar>
+    </div>
+  `,
+  styles: [`
+    .calendar-div {
+      /*max-height: 800px; */
+      overflow-y: hidden;
+      overflow-x: hidden;
+      height: 100%;
+    }
+  `]
 })
 export class WorkCalendarViewComponent implements AfterViewInit {
 

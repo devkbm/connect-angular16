@@ -1,6 +1,8 @@
+import { CommonModule } from '@angular/common';
+
 import { SessionManager } from 'src/app/core/session-manager';
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { ResponseObject } from 'src/app/core/model/response-object';
 import { FormBase, FormType } from 'src/app/core/form/form-base';
@@ -11,10 +13,19 @@ import { WorkCalendarMember } from './work-calendar-member.model';
 import { WorkCalendarService } from './work-calendar.service';
 
 import { NzInputTextComponent } from 'src/app/shared/nz-input-text/nz-input-text.component';
+import { NzCrudButtonGroupComponent } from 'src/app/shared/nz-crud-button-group/nz-crud-button-group.component';
+import { NzInputSimpleColorPickerComponent } from 'src/app/shared/nz-input-color-picker/nz-input-simple-color-picker.component';
+import { NzInputSelectComponent } from 'src/app/shared/nz-input-select/nz-input-select.component';
+import { NzFormModule } from 'ng-zorro-antd/form';
 
 
 @Component({
+  standalone: true,
   selector: 'app-work-calendar-form',
+  imports: [
+    CommonModule, FormsModule, ReactiveFormsModule, NzFormModule,
+    NzInputTextComponent, NzCrudButtonGroupComponent, NzInputSimpleColorPickerComponent, NzInputSelectComponent
+  ],
   templateUrl: './work-calendar-form.component.html',
   styleUrls: ['./work-calendar-form.component.css']
 })

@@ -1,11 +1,18 @@
+import { CommonModule } from '@angular/common';
+import { NzFormatEmitEvent, NzTreeModule } from 'ng-zorro-antd/tree';
+
 import { Component, OnInit, ViewChild, Output, EventEmitter, Input } from '@angular/core';
 import { BoardService } from './board.service';
 import { ResponseList } from '../../../core/model/response-list';
 import { BoardHierarchy } from './board-hierarchy.model';
-import { NzFormatEmitEvent } from 'ng-zorro-antd/tree';
+
 
 @Component({
+  standalone: true,
   selector: 'app-board-tree',
+  imports: [
+    CommonModule, NzTreeModule
+  ],
   template: `
     <nz-tree
       #treeCom

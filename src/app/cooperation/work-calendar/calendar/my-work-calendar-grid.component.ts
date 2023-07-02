@@ -1,3 +1,6 @@
+import { CommonModule } from '@angular/common';
+import { AgGridModule } from 'ag-grid-angular';
+
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AggridFunction } from '../../../core/grid/aggrid-function';
 import { ResponseList } from '../../../core/model/response-list';
@@ -6,8 +9,13 @@ import { AppAlarmService } from '../../../core/service/app-alarm.service';
 import { WorkCalendarService } from './work-calendar.service';
 import { WorkCalendar } from './work-calendar.model';
 
+
 @Component({
+  standalone: true,
   selector: 'app-my-work-calendar-grid',
+  imports: [
+    CommonModule, AgGridModule
+  ],
   template: `
     <ag-grid-angular
       [ngStyle]="style"

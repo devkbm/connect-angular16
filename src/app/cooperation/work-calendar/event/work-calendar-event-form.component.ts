@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, AfterViewInit, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { FormBase, FormType } from 'src/app/core/form/form-base';
 import { ResponseObject } from 'src/app/core/model/response-object';
@@ -12,9 +12,16 @@ import { WorkCalendarService } from '../calendar/work-calendar.service';
 import { WorkCalendar } from '../calendar/work-calendar.model';
 
 import { NzInputTextareaComponent } from 'src/app/shared/nz-input-textarea/nz-input-textarea.component';
-import { TimeFormat } from 'src/app/shared/nz-input-datetime/nz-input-datetime.component';
+import { NzInputDateTimeComponent, TimeFormat } from 'src/app/shared/nz-input-datetime/nz-input-datetime.component';
 
 import * as dateFns from "date-fns";
+import { CommonModule } from '@angular/common';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzCrudButtonGroupComponent } from 'src/app/shared/nz-crud-button-group/nz-crud-button-group.component';
+import { NzInputSimpleColorPickerComponent } from 'src/app/shared/nz-input-color-picker/nz-input-simple-color-picker.component';
+import { NzInputSelectComponent } from 'src/app/shared/nz-input-select/nz-input-select.component';
+import { NzInputTextComponent } from 'src/app/shared/nz-input-text/nz-input-text.component';
+import { NzInputCheckboxComponent } from 'src/app/shared/nz-input-checkbox/nz-input-checkbox.component';
 
 export interface NewFormValue {
   workCalendarId: number;
@@ -23,7 +30,13 @@ export interface NewFormValue {
 }
 
 @Component({
+  standalone: true,
   selector: 'app-work-calendar-event-form',
+  imports: [
+    CommonModule, FormsModule, ReactiveFormsModule, NzFormModule,
+    NzInputTextComponent, NzCrudButtonGroupComponent, NzInputSimpleColorPickerComponent,
+    NzInputSelectComponent, NzInputTextareaComponent, NzInputDateTimeComponent, NzInputCheckboxComponent
+  ],
   templateUrl: './work-calendar-event-form.component.html',
   styleUrls: ['./work-calendar-event-form.component.css']
 })
