@@ -10,13 +10,6 @@
 
   <!-- 1 row -->
   <div nz-row nzGutter="8">
-    <div nz-col nzSpan="8">
-      <app-nz-input-text #staffId
-         formControlName="staffId" itemId="duty_staffId"
-        placeholder="직원ID를 입력해주세요."
-        [required]="true" [nzErrorTip]="errorTpl">직원ID
-      </app-nz-input-text>
-    </div>
 
     <div nz-col nzSpan="8">
       <app-nz-input-text
@@ -84,7 +77,7 @@
 
 <div class="footer">
   <app-nz-crud-button-group
-    (searchClick)="get(fg.controls.staffId.value!, fg.controls.seq.value!)"
+    (searchClick)="get(fg.controls.staffNo.value!, fg.controls.seq.value!)"
     (closeClick)="closeForm()"
     (saveClick)="save()"
     (deleteClick)="true">

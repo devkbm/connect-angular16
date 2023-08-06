@@ -18,14 +18,13 @@ import { ResponseList } from 'src/app/core/model/response-list';
 })
 export class StaffLicenseFormComponent extends FormBase implements OnInit, AfterViewInit, OnChanges {
 
-  @Input() staff?: {staffId: string, staffNo: string, staffName: string};
+  @Input() staff?: {organizationCode: string, staffNo: string, staffName: string};
   /**
    * 자격면허 - HR0011
    */
   licenseTypeList: HrmCode[] = [];
 
   override fg = this.fb.group({
-    staffId                 : new FormControl<string | null>(null, { validators: Validators.required }),
     staffNo                 : new FormControl<string | null>(null, { validators: Validators.required }),
     staffName               : new FormControl<string | null>(null, { validators: Validators.required }),
     seq                     : new FormControl<string | null>(null),
@@ -63,7 +62,6 @@ export class StaffLicenseFormComponent extends FormBase implements OnInit, After
     this.formType = FormType.NEW;
 
     if (this.staff) {
-      this.fg.controls.staffId.setValue(this.staff?.staffId);
       this.fg.controls.staffNo.setValue(this.staff?.staffNo);
       this.fg.controls.staffName.setValue(this.staff?.staffName);
     }
@@ -74,7 +72,6 @@ export class StaffLicenseFormComponent extends FormBase implements OnInit, After
     this.formType = FormType.MODIFY;
 
     if (this.staff) {
-      this.fg.controls.staffId.setValue(this.staff?.staffId);
       this.fg.controls.staffNo.setValue(this.staff?.staffNo);
       this.fg.controls.staffName.setValue(this.staff?.staffName);
     }

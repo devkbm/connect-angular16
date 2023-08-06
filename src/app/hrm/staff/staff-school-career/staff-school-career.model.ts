@@ -1,5 +1,4 @@
 export interface StaffSchoolCareer {
-  staffId: string | null;
 	staffNo: string | null;
 	staffName: string | null;
   seq: string | null;

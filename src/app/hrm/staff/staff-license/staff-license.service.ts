@@ -43,7 +43,7 @@ export class StaffLicenseService extends DataService {
   }
 
   save(obj: StaffLicense): Observable<ResponseObject<StaffLicense>> {
-    const url = `${this.API_URL}/staff/${obj.staffId}/license`;
+    const url = `${this.API_URL}/staff/${obj.staffNo}/license`;
     const options = {
       headers: this.getAuthorizedHttpHeaders(),
       withCredentials: true

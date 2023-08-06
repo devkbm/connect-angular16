@@ -44,7 +44,7 @@ export class StaffDutyResponsibilityService extends DataService {
   }
 
   save(obj: StaffDutyResponsibility): Observable<ResponseObject<StaffDutyResponsibility>> {
-    const url = `${this.API_URL}/staff/${obj.staffId}/dutyresponsibility/`;
+    const url = `${this.API_URL}/staff/${obj.staffNo}/dutyresponsibility/`;
     const options = {
       headers: this.getAuthorizedHttpHeaders(),
       withCredentials: true

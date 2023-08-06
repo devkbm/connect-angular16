@@ -18,7 +18,7 @@ import { saveAs } from 'file-saver';
 })
 export class StaffRegistFormComponent extends FormBase implements OnInit {
 
-  @Input() staffId?: string;
+  @Input() staffNo?: string;
 
   imageUrl: any;
 
@@ -34,7 +34,6 @@ export class StaffRegistFormComponent extends FormBase implements OnInit {
   ];
 
   override fg = this.fb.group({
-    staffId                     : new FormControl<string | null>(null, { validators: Validators.required }),
     staffNo                     : new FormControl<string | null>(null, { validators: Validators.required }),
     name                        : new FormControl<string | null>(null, { validators: Validators.required }),
     nameEng                     : new FormControl<string | null>(null),
@@ -80,7 +79,7 @@ export class StaffRegistFormComponent extends FormBase implements OnInit {
             if ( model.total > 0 ) {
               this.modifyForm(model.data);
 
-              this.upload.data = { staffId: model.data.staffId };
+              this.upload.data = { staffId: model.data.staffNo };
 
               if (model.data.imagePath) {
                 this.imageUrl = GlobalProperty.serverUrl + '/static/' + model.data.imagePath;
@@ -135,7 +134,7 @@ export class StaffRegistFormComponent extends FormBase implements OnInit {
   downloadImage(params: any): void {
 
     this.service
-        .downloadStaffImage(this.fg.controls.staffId.value!)
+        .downloadStaffImage(this.fg.controls.staffNo.value!)
         .subscribe(
           (model: Blob) => {
             //this.appAlarmService.changeMessage(model.message);

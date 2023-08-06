@@ -1,5 +1,4 @@
 export interface StaffDutyResponsibility {
-  staffId: string | null;
   staffNo: string | null;
   staffName: string | null;
   seq: string | null;

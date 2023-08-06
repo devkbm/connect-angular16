@@ -19,7 +19,7 @@ import { StaffAppointmentRecordService } from './staff-appointment-record.servic
 })
 export class StaffAppointmentRecordFormComponent extends FormBase implements OnInit {
 
-  @Input() staff?: {staffId: string, staffNo: string, staffName: string};
+  @Input() staff?: {organizationCode: string, staffNo: string, staffName: string};
 
   bizTypeList = [{code:'code', name:'name'},{code:'code2', name:'name2'}];
 
@@ -63,7 +63,6 @@ export class StaffAppointmentRecordFormComponent extends FormBase implements OnI
   dutyResponsibilityCodeList: HrmCode[] = [];
 
   override fg = this.fb.group({
-      staffId                 : new FormControl<string | null>(null, { validators: Validators.required }),
       staffNo                 : new FormControl<string | null>(null, { validators: Validators.required }),
       staffName               : new FormControl<string | null>(null),
       seq                     : new FormControl<string | null>(null),
@@ -112,12 +111,11 @@ export class StaffAppointmentRecordFormComponent extends FormBase implements OnI
   newForm(): void {
     this.formType = FormType.NEW;
 
-    this.fg.controls.staffId.disable();
     this.fg.controls.staffNo.disable();
     this.fg.controls.staffName.disable();
 
     if (this.staff) {
-      this.fg.controls.staffId.setValue(this.staff?.staffId);
+      //this.fg.controls.staffId.setValue(this.staff?.staffId);
       this.fg.controls.staffNo.setValue(this.staff?.staffNo);
       this.fg.controls.staffName.setValue(this.staff?.staffName);
     }
@@ -127,7 +125,6 @@ export class StaffAppointmentRecordFormComponent extends FormBase implements OnI
   modifyForm(formData: StaffAppointmentRecord): void {
     this.formType = FormType.MODIFY;
 
-    this.fg.controls.staffId.disable();
     this.fg.controls.staffNo.disable();
     this.fg.controls.staffName.disable();
 

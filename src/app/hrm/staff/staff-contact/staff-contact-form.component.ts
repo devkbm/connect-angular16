@@ -131,12 +131,12 @@ import { StaffContact } from './staff-contact.model';
 })
 export class StaffContactFormComponent extends FormBase implements OnInit, AfterViewInit, OnChanges {
 
-  @Input() staff?: {staffId: string, staffNo: string, staffName: string};
+  @Input() staff?: {organizationCode: string, staffNo: string, staffName: string};
 
   //@ViewChild('domainName') domainName?: NzInputTextComponent;
 
   override fg = this.fb.group({
-    staffId           : new FormControl<string | null>(null, { validators: Validators.required }),
+    //staffId           : new FormControl<string | null>(null, { validators: Validators.required }),
     staffNo           : new FormControl<string | null>(null, { validators: Validators.required }),
     staffName         : new FormControl<string | null>(null, { validators: Validators.required }),
     homeAddressType   : new FormControl<string | null>(null, { validators: Validators.required }),
@@ -180,7 +180,7 @@ export class StaffContactFormComponent extends FormBase implements OnInit, After
     this.fg.controls.homeMainAddress.disable();
 
     if (this.staff) {
-      this.fg.controls.staffId.setValue(this.staff?.staffId);
+      //this.fg.controls.staffId.setValue(this.staff?.staffId);
       this.fg.controls.staffNo.setValue(this.staff?.staffNo);
       this.fg.controls.staffName.setValue(this.staff?.staffName);
     }
@@ -194,7 +194,7 @@ export class StaffContactFormComponent extends FormBase implements OnInit, After
     this.fg.controls.homeMainAddress.disable();
 
     if (this.staff) {
-      this.fg.controls.staffId.setValue(this.staff?.staffId);
+      //this.fg.controls.staffId.setValue(this.staff?.staffId);
       this.fg.controls.staffNo.setValue(this.staff?.staffNo);
       this.fg.controls.staffName.setValue(this.staff?.staffName);
     }

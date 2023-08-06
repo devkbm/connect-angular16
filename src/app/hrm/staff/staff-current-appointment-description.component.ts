@@ -3,7 +3,6 @@ import { ResponseObject } from 'src/app/core/model/response-object';
 import { StaffService } from './staff.service';
 
 export interface StaffCurrentAppointment {
-	staffId: string;
 	organizationCode: string;
 	staffNo: string;
 	blngDeptId: string;
@@ -41,7 +40,7 @@ export interface StaffCurrentAppointment {
 })
 export class StaffCurrentAppointmentDescriptionComponent implements OnInit, OnChanges {
 
-  @Input() staffId?: string;
+  @Input() staffNo?: string;
 
   info?: StaffCurrentAppointment;
 
@@ -51,15 +50,15 @@ export class StaffCurrentAppointmentDescriptionComponent implements OnInit, OnCh
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['staffId']) {
-      this.get(changes['staffId'].currentValue);
+    if (changes['staffNo']) {
+      this.get(changes['staffNo'].currentValue);
     }
   }
 
-  get(staffId: string): void {
-    if (staffId) {
+  get(staffNo: string): void {
+    if (staffNo) {
       this.service
-        .getCurrentAppointment(staffId)
+        .getCurrentAppointment(staffNo)
         .subscribe(
           (model: ResponseObject<StaffCurrentAppointment>) => {
             if ( model.total > 0 ) {

@@ -43,7 +43,7 @@ export class StaffAppointmentRecordService extends DataService {
   }
 
   save(obj: StaffAppointmentRecord): Observable<ResponseObject<StaffAppointmentRecord>> {
-    const url = `${this.API_URL}/${obj.staffId}/appointmentrecord`;
+    const url = `${this.API_URL}/${obj.staffNo}/appointmentrecord`;
     const options = {
       headers: this.getAuthorizedHttpHeaders(),
       withCredentials: true

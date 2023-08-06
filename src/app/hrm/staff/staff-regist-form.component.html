@@ -38,14 +38,6 @@
   <div nz-row nzGutter="8">
     <div nz-col nzSpan="8">
       <app-nz-input-text
-        formControlName="staffId" itemId="staffId"
-        placeholder=""
-        [required]="true" [readonly]="true" [nzErrorTip]="errorTpl">직원ID
-      </app-nz-input-text>
-    </div>
-
-    <div nz-col nzSpan="8">
-      <app-nz-input-text
         formControlName="staffNo" itemId="staffNo"
         placeholder=""
         [required]="true" [readonly]="true" [nzErrorTip]="errorTpl">직원번호
@@ -57,24 +49,6 @@
         formControlName="name" itemId="name"
         placeholder=""
         [required]="true" [nzErrorTip]="errorTpl">직원명
-      </app-nz-input-text>
-    </div>
-  </div>
-
-  <div nz-row nzGutter="8">
-    <div nz-col nzSpan="8">
-      <app-nz-input-text
-        formControlName="nameEng" itemId="nameEng"
-        placeholder=""
-        [required]="false" [nzErrorTip]="errorTpl">직원명(영문)
-      </app-nz-input-text>
-    </div>
-
-    <div nz-col nzSpan="8">
-      <app-nz-input-text
-        formControlName="nameChi" itemId="nameChi"
-        placeholder=""
-        [required]="false" [nzErrorTip]="errorTpl">직원명(한문)
       </app-nz-input-text>
     </div>
 
@@ -95,6 +69,24 @@
         </nz-radio-group>
       </nz-form-item>
       -->
+    </div>
+  </div>
+
+  <div nz-row nzGutter="8">
+    <div nz-col nzSpan="8">
+      <app-nz-input-text
+        formControlName="nameEng" itemId="nameEng"
+        placeholder=""
+        [required]="false" [nzErrorTip]="errorTpl">직원명(영문)
+      </app-nz-input-text>
+    </div>
+
+    <div nz-col nzSpan="8">
+      <app-nz-input-text
+        formControlName="nameChi" itemId="nameChi"
+        placeholder=""
+        [required]="false" [nzErrorTip]="errorTpl">직원명(한문)
+      </app-nz-input-text>
     </div>
   </div>
 

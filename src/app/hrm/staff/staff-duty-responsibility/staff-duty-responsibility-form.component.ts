@@ -18,7 +18,7 @@ import { StaffDutyResponsibilityService } from './staff-duty-responsibility.serv
 })
 export class StaffDutyResponsibilityFormComponent extends FormBase implements OnInit, AfterViewInit {
 
-  @Input() staff?: {staffId: string, staffNo: string, staffName: string};
+  @Input() staff?: {organizationCode: string, staffNo: string, staffName: string};
 
   /**
    * 직책코드 - HR0007
@@ -26,7 +26,6 @@ export class StaffDutyResponsibilityFormComponent extends FormBase implements On
   dutyResponsibilityCodeList: HrmCode[] = [];
 
   override fg = this.fb.group({
-      staffId                 : new FormControl<string | null>({value: null, disabled: true}, { validators: [Validators.required] }),
       staffNo                 : new FormControl<string | null>(null, { validators: Validators.required }),
       staffName               : new FormControl<string | null>(null),
       seq                     : new FormControl<string | null>({value: null, disabled: true}, { validators: [Validators.required] }),
@@ -60,12 +59,10 @@ export class StaffDutyResponsibilityFormComponent extends FormBase implements On
   newForm(): void {
     this.formType = FormType.NEW;
 
-    this.fg.controls.staffId.disable();
     this.fg.controls.staffNo.disable();
     this.fg.controls.staffName.disable();
 
     if (this.staff) {
-      this.fg.controls.staffId.setValue(this.staff?.staffId);
       this.fg.controls.staffNo.setValue(this.staff?.staffNo);
       this.fg.controls.staffName.setValue(this.staff?.staffName);
     }
@@ -74,7 +71,6 @@ export class StaffDutyResponsibilityFormComponent extends FormBase implements On
   modifyForm(formData: StaffDutyResponsibility): void {
     this.formType = FormType.MODIFY;
 
-    this.fg.controls.staffId.disable();
     this.fg.controls.staffNo.disable();
     this.fg.controls.staffName.disable();
     this.fg.controls.seq.disable();

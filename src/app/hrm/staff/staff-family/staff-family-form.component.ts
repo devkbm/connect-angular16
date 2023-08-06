@@ -19,7 +19,7 @@ import { ResponseList } from 'src/app/core/model/response-list';
 })
 export class StaffFamilyFormComponent extends FormBase implements OnInit, AfterViewInit, OnChanges {
 
-  @Input() staff?: {staffId: string, staffNo: string, staffName: string};
+  @Input() staff?: {organizationCode: string, staffNo: string, staffName: string};
 
   /**
    * 가족관계 - HR0008
@@ -27,7 +27,6 @@ export class StaffFamilyFormComponent extends FormBase implements OnInit, AfterV
   familyRelationList: HrmCode[] = [];
 
   override fg = this.fb.group({
-    staffId             : new FormControl<string | null>(null, { validators: Validators.required }),
     staffNo             : new FormControl<string | null>(null, { validators: Validators.required }),
     staffName           : new FormControl<string | null>(null, { validators: Validators.required }),
     seq                 : new FormControl<string | null>(null),
@@ -65,12 +64,10 @@ export class StaffFamilyFormComponent extends FormBase implements OnInit, AfterV
   newForm() {
     this.formType = FormType.NEW;
 
-    this.fg.controls.staffId.disable();
     this.fg.controls.staffNo.disable();
     this.fg.controls.staffName.disable();
 
     if (this.staff) {
-      this.fg.controls.staffId.setValue(this.staff?.staffId);
       this.fg.controls.staffNo.setValue(this.staff?.staffNo);
       this.fg.controls.staffName.setValue(this.staff?.staffName);
     }
@@ -80,12 +77,10 @@ export class StaffFamilyFormComponent extends FormBase implements OnInit, AfterV
   modifyForm(formData: StaffFamily) {
     this.formType = FormType.MODIFY;
 
-    this.fg.controls.staffId.disable();
     this.fg.controls.staffNo.disable();
     this.fg.controls.staffName.disable();
 
     if (this.staff) {
-      this.fg.controls.staffId.setValue(this.staff?.staffId);
       this.fg.controls.staffNo.setValue(this.staff?.staffNo);
       this.fg.controls.staffName.setValue(this.staff?.staffName);
     }

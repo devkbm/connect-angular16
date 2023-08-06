@@ -26,7 +26,7 @@ export class StaffManagementComponent extends AppBase implements OnInit {
   @ViewChild(StaffLicenseGridComponent) gridLicense!: StaffLicenseGridComponent;
   @ViewChild(StaffSchoolCareerGridComponent) gridSchoolcareer!: StaffSchoolCareerGridComponent;
 
-  selectedStaff?: {staffId: string, staffNo: string, staffName: string};
+  selectedStaff?: {organizationCode: string, staffNo: string, staffName: string};
 
   drawerNewStaff: { visible: boolean, initLoadId: any } = {
     visible: false,
@@ -71,8 +71,9 @@ export class StaffManagementComponent extends AppBase implements OnInit {
   }
 
   staffGridRowClicked(params: any) {
-    this.selectedStaff = {staffId: params.staffId, staffNo: params.staffNo, staffName: params.name};
-    this.formStaff.get(params.staffId);
+    console.log(params);
+    this.selectedStaff = {organizationCode: params.organizationCode, staffNo: params.staffNo, staffName: params.name};
+    this.formStaff.get(params.staffNo);
   }
 
   selectGridStaff() {
@@ -99,17 +100,17 @@ export class StaffManagementComponent extends AppBase implements OnInit {
 
   selectGridAppointment() {
     this.drawerAppointment.visible = false;
-    this.gridAppointment.getList(this.selectedStaff?.staffId!);
+    this.gridAppointment.getList(this.selectedStaff?.staffNo!);
   }
 
   editAppointment(row: StaffAppointmentRecord) {
-    this.drawerAppointment.initLoadId = {staffId: row.staffId, seq: row.seq};
+    this.drawerAppointment.initLoadId = {staffId: row.staffNo, seq: row.seq};
     this.drawerAppointment.visible = true;
   }
 
   selectGridFaimly() {
     this.drawerFamily.visible = false;
-    this.gridFamily.getList(this.selectedStaff?.staffId!);
+    this.gridFamily.getList(this.selectedStaff?.staffNo!);
   }
 
   newFamily() {
@@ -117,13 +118,13 @@ export class StaffManagementComponent extends AppBase implements OnInit {
   }
 
   editFamily(row: StaffFamily) {
-    this.drawerFamily.initLoadId = {staffId: row.staffId, seq: row.seq};
+    this.drawerFamily.initLoadId = {staffId: row.staffNo, seq: row.seq};
     this.drawerFamily.visible = true;
   }
 
   selectGridSchoolCareer() {
     this.drawerSchoolCareer.visible = false;
-    this.gridSchoolcareer.getList(this.selectedStaff?.staffId!);
+    this.gridSchoolcareer.getList(this.selectedStaff?.staffNo!);
   }
 
   newSchoolCareer() {
@@ -131,13 +132,13 @@ export class StaffManagementComponent extends AppBase implements OnInit {
   }
 
   editSchoolCareer(row: StaffSchoolCareer) {
-    this.drawerSchoolCareer.initLoadId = {staffId: row.staffId, seq: row.seq};
+    this.drawerSchoolCareer.initLoadId = {staffId: row.staffNo, seq: row.seq};
     this.drawerSchoolCareer.visible = true;
   }
 
   selectGridLicense() {
     this.drawerLicense.visible = false;
-    this.gridLicense.getList(this.selectedStaff?.staffId!);
+    this.gridLicense.getList(this.selectedStaff?.staffNo!);
   }
 
   newLicense() {
@@ -145,7 +146,7 @@ export class StaffManagementComponent extends AppBase implements OnInit {
   }
 
   editLicense(row: StaffLicense) {
-    this.drawerLicense.initLoadId = {staffId: row.staffId, seq: row.seq};
+    this.drawerLicense.initLoadId = {staffId: row.staffNo, seq: row.seq};
     this.drawerLicense.visible = true;
   }
 

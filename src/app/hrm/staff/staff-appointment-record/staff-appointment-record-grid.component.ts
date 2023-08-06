@@ -29,7 +29,7 @@ export class StaffAppointmentRecordGridComponent extends AggridFunction implemen
 
   protected _list: StaffAppointmentRecord[] = [];
 
-  @Input() staffId?: string;
+  @Input() staffNo?: string;
 
   @Output() rowSelected = new EventEmitter();
   @Output() rowDoubleClicked = new EventEmitter();
@@ -90,14 +90,14 @@ export class StaffAppointmentRecordGridComponent extends AggridFunction implemen
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['staffId']) {
-      this.getList(changes['staffId'].currentValue);
+    if (changes['staffNo']) {
+      this.getList(changes['staffNo'].currentValue);
     }
   }
 
-  getList(staffId: string): void {
+  getList(staffNo: string): void {
     this.service
-        .getList(staffId)
+        .getList(staffNo)
         .subscribe(
           (model: ResponseList<StaffAppointmentRecord>) => {
               if (model.total > 0) {
