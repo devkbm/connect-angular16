@@ -1,3 +1,5 @@
+import { CommonModule } from '@angular/common';
+import { AgGridModule } from 'ag-grid-angular';
 import { Component, OnInit, Output, EventEmitter, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { AggridFunction } from 'src/app/core/grid/aggrid-function';
 
@@ -8,8 +10,13 @@ import { StaffAppointmentRecordService } from './staff-appointment-record.servic
 import { StaffAppointmentRecord } from './staff-appointment-record.model';
 import { ButtonRendererComponent } from 'src/app/core/grid/renderer/button-renderer.component';
 
+
 @Component({
   selector: 'app-staff-appointment-record-grid',
+  standalone: true,
+  imports: [
+    CommonModule, AgGridModule
+  ],
   template: `
     <ag-grid-angular
       [ngStyle]="style"

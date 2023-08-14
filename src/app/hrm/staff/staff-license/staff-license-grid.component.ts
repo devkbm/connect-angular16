@@ -1,3 +1,5 @@
+import { CommonModule } from '@angular/common';
+import { AgGridModule } from 'ag-grid-angular';
 import { Component, OnInit, Output, EventEmitter, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { AggridFunction } from 'src/app/core/grid/aggrid-function';
 
@@ -10,6 +12,10 @@ import { ButtonRendererComponent } from 'src/app/core/grid/renderer/button-rende
 
 @Component({
   selector: 'app-staff-license-grid',
+  standalone: true,
+  imports: [
+    CommonModule, AgGridModule
+  ],
   template: `
     <ag-grid-angular
       [ngStyle]="style"

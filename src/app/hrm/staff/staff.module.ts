@@ -106,12 +106,16 @@ import { NzPageHeaderCustomComponent } from 'src/app/shared/nz-page-header-custo
     NzInputRregnoComponent,
     NzInputSelectComponent,
     NzListRoadAddressComponent,
-    NzPageHeaderCustomComponent
+    NzPageHeaderCustomComponent,
+
+    StaffAppointmentRecordGridComponent,
+    StaffFamilyGridComponent,
+    StaffLicenseGridComponent,
+    StaffSchoolCareerGridComponent
   ],
   declarations: [
     StaffRegistFormComponent,
     StaffAppointmentRecordFormComponent,
-    StaffAppointmentRecordGridComponent,
     NewStaffFormComponent,
     StaffGridComponent,
     StaffCurrentAppointmentDescriptionComponent,
@@ -120,11 +124,8 @@ import { NzPageHeaderCustomComponent } from 'src/app/shared/nz-page-header-custo
     StaffContactFormComponent,
     StaffManagementComponent,
     StaffFamilyFormComponent,
-    StaffFamilyGridComponent,
     StaffLicenseFormComponent,
-    StaffLicenseGridComponent,
     StaffSchoolCareerFormComponent,
-    StaffSchoolCareerGridComponent,
     StaffCardListComponent,
     StaffCardComponent
   ],
